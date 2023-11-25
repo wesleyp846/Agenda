@@ -2,10 +2,9 @@
 
 Mini agenda de contatos feita em Python. Projeto inicial para treino de Python.
 
-<hr>
-
-> Funcionalidades
-
+&nbsp;
+>## Funcionalidades
+&nbsp;
 1. Ver todos os contatos
 2. Buscar um contato por nome
 3. Adicionar novo contato
@@ -15,9 +14,10 @@ Mini agenda de contatos feita em Python. Projeto inicial para treino de Python.
 7.  Importar contatos de CSV
 8.  Salva e carrega contatos ao iniciar (persistência em arquivo CSV)
 
-<hr>
- Uso
-<br>
+&nbsp;
+>## Uso
+&nbsp;
+
 Ao executar o script python, um menu é exibido permitindo escolher as opções acima.
 
 O estado atual da agenda (contatos e dados) é salvo no arquivo `database.csv` a cada alteração, e carregado novamente na inicialização.
@@ -31,11 +31,14 @@ As funções implementam as diversas operações como adicionar, editar, excluir
 
 Para persistência, os dados são exportados para o CSV database.csv utilizando encoding e decoding próprio em texto.
 
-<hr>
-Créditos
+&nbsp;
+>## Créditos
+&nbsp;
+
 Código inicial fornecido pela Solyd Treinamentos.
 
 Documentação e melhorias adicionadas por [Wesley Pereira](https://github.com/wesleyp846)
 
+&nbsp;
 > Licença
 MIT
