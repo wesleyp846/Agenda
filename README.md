@@ -40,5 +40,5 @@ Documentação e melhorias adicionadas por [Wesley Pereira](https://github.com/w
 > Licença
 MIT
 
-pip install flet
-pip install flet --upgrade
+        pip install flet
+        pip install flet --upgrade
