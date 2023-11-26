@@ -112,7 +112,7 @@ def carregar():
                     'email': email,
                     'endereco': endereco,
                 }
-        print('>>> datavase carregado com sucesso')
+        print('>>> database carregado com sucesso')
         print(f'{len(AGENDA)} contatos carregados')
     except FileNotFoundError:
         print('>>>> Arquivo não encontrado')
