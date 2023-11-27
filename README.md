@@ -42,3 +42,5 @@ MIT
 
         pip install flet
         pip install flet --upgrade
+
+(Documentação Flet)[https://flet.dev/docs/] utilizada na interface gráfica.

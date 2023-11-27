@@ -11,10 +11,7 @@ def main(page: ft.Page):
     #Caixa de texto
 
     c1= ft.Container(
-        content = ft.ElevatedButton("Botão elevado com sombra"), 
-        bgcolor=ft.colors.AMBER,
-        padding=5,
-        width=300
+        content = ft.Text("Agenda de Contatos", style=ft.TextThemeStyle.DISPLAY_LARGE)
     )
 
     c2= ft.Container(
@@ -30,4 +27,6 @@ def main(page: ft.Page):
     #page.add(ft.Text("AGENDA"))
     
 
-ft.app(target=main)
+#ft.app(target=main)
+#ft.app(port=8550, target=main)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER)
