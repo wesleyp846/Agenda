@@ -2,6 +2,8 @@
 
 Mini agenda de contatos feita em Python. Projeto inicial para treino de Python.
 
+Proxima versão em desenvolvimento, traremos interface gráfica 
+
 &nbsp;
 >## Funcionalidades
 &nbsp;
