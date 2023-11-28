@@ -44,3 +44,8 @@ Documentação e melhorias adicionadas por [Wesley Pereira](https://github.com/w
 &nbsp;
 > Licença
 MIT
+
+        pip install flet
+        pip install flet --upgrade
+
+(Documentação Flet)[https://flet.dev/docs/] utilizada na interface gráfica.
