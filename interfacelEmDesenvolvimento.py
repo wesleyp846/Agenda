@@ -1,4 +1,5 @@
 import flet as ft
+from nucleo import *
 
 def main(page: ft.Page):
     page.title = "Agenda de Contatos"
@@ -16,10 +17,9 @@ def main(page: ft.Page):
                     ft.AppBar(title=ft.Text("AGENDA"), bgcolor=ft.colors.SURFACE_VARIANT, center_title=True),
                     ft.ElevatedButton("Mostar Contatos", on_click=lambda _: page.go("/mostar_contatos"), width=170),
                     ft.ElevatedButton("Buscar Contatos", on_click=lambda _: page.go("/buscar_contatos"), width=170),
-                    ft.ElevatedButton("Incluir Contato", on_click=lambda _: page.go("/incluir_contato"), width=170),
+                    ft.ElevatedButton("Salvar Contato", on_click=lambda _: page.go("/salvar_contato"), width=170),
                     ft.ElevatedButton("Editar Contato", on_click=lambda _: page.go("/editar_contato"), width=170),
                     ft.ElevatedButton("Excluir Contato", on_click=lambda _: page.go("/excluir_contato"), width=170),
-                    ft.ElevatedButton("Salvar Contato", on_click=lambda _: page.go("/salvar_contato"), width=170),
                     ft.ElevatedButton("Importar Contatos", on_click=lambda _: page.go("/importar_contatos"), width=170),
                     ft.ElevatedButton("Exportar Contatos", on_click=lambda _: page.go("/exportar_contatos"), width=170),
                 ],
@@ -53,26 +53,36 @@ def main(page: ft.Page):
                 )
             )
 
-        if page.route == "/incluir_contato":
+        if page.route == "/salvar_contato":
+
+            nome_texto = ft.TextField(label="Nome", border_radius=10)
+            telefone_texto = ft.TextField(label="Telefone", border_radius=10)
+            email_texto = ft.TextField(label="E-mail", border_radius=10)
+            endereco_texto = ft.TextField(label="Endereço", border_radius=10)
+
+            def salvar_contato(e):
+                nome = nome_texto.value
+                telefone = telefone_texto.value
+                email = email_texto.value
+                endereco = endereco_texto.value
+                
+                incluir_editar_contato(nome, telefone, email, endereco)
+                page.go("/")
+
             buttons_row = ft.Row([
-                # FAZER LOGICA DE SALVAR O CONTATO
-                ft.ElevatedButton("Salvar Contato", on_click=lambda _: page.go("/"), width=170),
+                ft.ElevatedButton("Salvar Contato", on_click=salvar_contato, width=170),
                 ft.ElevatedButton("Cancelar", on_click=lambda _: page.go("/"), width=170)
-            ],
-            alignment=ft.MainAxisAlignment.CENTER,
-            )
+            ], alignment=ft.MainAxisAlignment.CENTER)
+
             page.views.append(
-                ft.View(
-                "/incluir_contato",
-                [
-                    ft.AppBar(title=ft.Text("Incluir Contato")),
-                    ft.TextField(label="Nome", border_radius=10),
-                    ft.TextField(label="Telefone", border_radius=10),
-                    ft.TextField(label="E-mail", border_radius=10), 
-                    ft.TextField(label="Endereço", border_radius=10),
-                    buttons_row,
-                ]
-                )
+                ft.View("/salvar_contato", [
+                    ft.AppBar(title=ft.Text("Salvar Contato")),
+                    nome_texto,
+                    telefone_texto,
+                    email_texto,
+                    endereco_texto,
+                    buttons_row
+                ])
             )
 
         if page.route == "/editar_contato":
@@ -93,18 +103,6 @@ def main(page: ft.Page):
                     "/excluir_contato",
                     [
                         ft.AppBar(title=ft.Text("Excluir Contato"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.ElevatedButton("Pagina Inicial", on_click=lambda _: page.go("/")),
-                    ],
-                    horizontal_alignment = ft.CrossAxisAlignment.CENTER,
-                )
-            )
-
-        if page.route == "/salvar_contato":
-            page.views.append(
-                ft.View(
-                    "/salvar_contato",
-                    [
-                        ft.AppBar(title=ft.Text("Salvar Contato"), bgcolor=ft.colors.SURFACE_VARIANT),
                         ft.ElevatedButton("Pagina Inicial", on_click=lambda _: page.go("/")),
                     ],
                     horizontal_alignment = ft.CrossAxisAlignment.CENTER,
