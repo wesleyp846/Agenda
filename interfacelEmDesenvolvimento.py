@@ -31,11 +31,11 @@ def main(page: ft.Page):
         
         if page.route == "/mostar_contatos":
 
-            def contato_card(nome, telefone):
+            def contato_card(nome, tel):
                 return ft.Container(
                 content=ft.Column([ 
                     ft.Text(nome),
-                    ft.Text(telefone)
+                    ft.Text(tel)
                     ]),
                 #on_click=lambda: view_contato(nome),
                 on_click=lambda _: view_contato(nome),
@@ -50,7 +50,7 @@ def main(page: ft.Page):
                 page.views.append(
                 ft.View("/contato", [
                     ft.Text(nome),
-                    ft.Text(info["telefone"]),
+                    ft.Text(info["tel"]),
                     ft.Text(info["email"]),  
                     ft.Text(info["endereco"]),
                     ft.ElevatedButton("Voltar", on_click=lambda: page.pop())
@@ -88,17 +88,17 @@ def main(page: ft.Page):
         if page.route == "/salvar_contato":
 
             nome_texto = ft.TextField(label="Nome", border_radius=10)
-            telefone_texto = ft.TextField(label="Telefone", border_radius=10)
+            tel_texto = ft.TextField(label="Telefone", border_radius=10)
             email_texto = ft.TextField(label="E-mail", border_radius=10)
             endereco_texto = ft.TextField(label="Endereço", border_radius=10)
 
             def salvar_contato(e):
                 nome = nome_texto.value
-                telefone = telefone_texto.value
+                tel = tel_texto.value
                 email = email_texto.value
                 endereco = endereco_texto.value
                 
-                incluir_editar_contato(nome, telefone, email, endereco)
+                incluir_editar_contato(nome, tel, email, endereco)
                 page.go("/")
 
             buttons_row = ft.Row([
@@ -110,7 +110,7 @@ def main(page: ft.Page):
                 ft.View("/salvar_contato", [
                     ft.AppBar(title=ft.Text("Salvar Contato")),
                     nome_texto,
-                    telefone_texto,
+                    tel_texto,
                     email_texto,
                     endereco_texto,
                     buttons_row

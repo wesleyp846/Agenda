@@ -7,9 +7,9 @@ def carregar_contatos():
         leitor = csv.reader(arquivo)
         #next(leitor) # pular cabeçalho
         for linha in leitor:
-            nome, telefone, email, endereco = linha
+            nome, tel, email, endereco = linha
             AGENDA[nome] = {
-                "tel": telefone,
+                "tel": tel,
                 "email": email,
                 "endereco": endereco
             }
