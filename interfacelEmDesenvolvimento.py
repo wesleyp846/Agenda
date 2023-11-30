@@ -1,6 +1,8 @@
 import flet as ft
 from nucleo import *
 
+carregar_contatos()
+
 def main(page: ft.Page):
     page.title = "Agenda de Contatos"
     page.padding = 10
@@ -28,16 +30,45 @@ def main(page: ft.Page):
         )
         
         if page.route == "/mostar_contatos":
+
+            def contato_card(nome, telefone):
+                return ft.Container(
+                content=ft.Column([ 
+                    ft.Text(nome),
+                    ft.Text(telefone)
+                    ]),
+                on_click=lambda: view_contato(nome),
+                width=350,
+                bgcolor=ft.colors.SURFACE_VARIANT,
+                border_radius=10,
+                padding=10,
+                )
+
+            def view_contato(nome):
+                info = AGENDA[nome]
+                page.views.append(
+                ft.View("/contato", [
+                    ft.Text(nome),
+                    ft.Text(info["telefone"]),
+                    ft.Text(info["email"]),  
+                    ft.Text(info["endereco"]),
+                    ft.ElevatedButton("Voltar", on_click=lambda: page.pop())
+                ])
+                )
+
+            contatos_cards = [
+                contato_card(nome, info["tel"]) 
+                for nome, info in AGENDA.items()
+            ]
+            
             page.views.append(
                 ft.View(
-                    "/mostar_contatos",
-                    [
-                        ft.AppBar(title=ft.Text("Mostar Contatos"), bgcolor=ft.colors.SURFACE_VARIANT),
-                        ft.ElevatedButton("Pagina Inicial", on_click=lambda _: page.go("/")),
-                    ],
-                    
-                    horizontal_alignment = ft.CrossAxisAlignment.CENTER,
-                    #vertical_alignment=ft.MainAxisAlignment.END,
+                "/mostar_contatos",
+                [
+                    ft.Column(contatos_cards),
+                    ft.ElevatedButton("Pagina Inicial", on_click=lambda _: page.go("/")),
+                ],
+                horizontal_alignment = ft.CrossAxisAlignment.CENTER,
                 )
             )
 

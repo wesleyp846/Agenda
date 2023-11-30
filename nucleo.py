@@ -1,4 +1,19 @@
+import csv
+
 AGENDA = {}
+
+def carregar_contatos():
+    with open('dbagenda.csv') as arquivo:
+        leitor = csv.reader(arquivo)
+        #next(leitor) # pular cabeçalho
+        for linha in leitor:
+            nome, telefone, email, endereco = linha
+            AGENDA[nome] = {
+                "tel": telefone,
+                "email": email,
+                "endereco": endereco
+            }
+    print(f"{len(AGENDA)} contatos carregados!")
 
 def exportar_contatos(nome_do_arquivo):
     try:
