@@ -37,7 +37,8 @@ def main(page: ft.Page):
                     ft.Text(nome),
                     ft.Text(telefone)
                     ]),
-                on_click=lambda: view_contato(nome),
+                #on_click=lambda: view_contato(nome),
+                on_click=lambda _: view_contato(nome),
                 width=350,
                 bgcolor=ft.colors.SURFACE_VARIANT,
                 border_radius=10,
