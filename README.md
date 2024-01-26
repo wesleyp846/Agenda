@@ -1,3 +1,5 @@
+# Projeto em pausa
+
 # Agenda
 
 Mini agenda de contatos feita em Python. Projeto inicial para treino de Python.
